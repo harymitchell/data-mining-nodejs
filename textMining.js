@@ -81,7 +81,8 @@ TermDocumentMapKeys.forEach(function(term){
     var docMap = TermDocumentMap[term];
     Object.keys(docMap).forEach(function(docIndex){
         if (typeof TermDocumentMatrix[docIndex] != "object") {
-            TermDocumentMatrix[docIndex] = [];
+            TermDocumentMatrix[docIndex] = new Array(len);
+            TermDocumentMatrix[docIndex].fill(0);
         }
         TermDocumentMatrix[docIndex][termIndex] = docMap[docIndex];
     });
