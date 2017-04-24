@@ -75,7 +75,7 @@ data.forEach(function(d){
  */
 var TermDocumentMatrix = new Array(data.length); /** [count, count, count ...] , [count, count, count ...] **/
 var termIndex = 0;
-var TermDocumentMapKeys = Object.keys(TermDocumentMap);
+var TermDocumentMapKeys = Object.keys(TermDocumentMap); // ["word", "word2", etc]
 var len = TermDocumentMapKeys.length;
 TermDocumentMapKeys.forEach(function(term){
     var docMap = TermDocumentMap[term];
@@ -86,6 +86,8 @@ TermDocumentMapKeys.forEach(function(term){
         }
         TermDocumentMatrix[docIndex][termIndex] = docMap[docIndex];
     });
+	// we can delete the entry in the TermDocumentMap, since we wont need it again
+	delete TermDocumentMap[term];
     termIndex++;
 });
 
