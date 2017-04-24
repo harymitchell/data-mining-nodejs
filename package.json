@@ -1,7 +1,11 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "babyparse": "^0.4.6",
+    "euclidean-distance": "^1.0.0",
+    "papaparse": "^4.2.0"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
