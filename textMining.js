@@ -11,7 +11,7 @@ if (process.argv[2] === "RUNNER") {
     //var dataSizes = [10, 20, 30, 40, 50];
     //var ks = [3,4];
     
-    var iterators = [100, 5000, 1000, 2000, 5000, 10000, 20000, 50000];
+    var dataSizes = [100, 5000, 1000, 2000, 5000, 10000, 20000, 50000];
     var ks = [3, 4, 5, 6, 7, 8, 9, 10];
     
     dataSizes.forEach(function(s){
