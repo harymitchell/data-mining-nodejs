@@ -11,8 +11,8 @@ if (process.argv[2] === "RUNNER") {
     //var dataSizes = [10, 20, 30, 40, 50];
     //var ks = [3,4];
     
-    var dataSizes = [100, 5000, 1000, 2000, 5000, 10000, 20000, 50000];
-    var ks = [3, 4, 5, 6, 7, 8, 9, 10];
+    var dataSizes = [100, 5000, 1000, 2000, 5000];
+    var ks = [3, 4, 5, 6, 7];
     
     dataSizes.forEach(function(s){
         ks.forEach(function(k){
@@ -81,8 +81,7 @@ TermDocumentMapKeys.forEach(function(term){
     var docMap = TermDocumentMap[term];
     Object.keys(docMap).forEach(function(docIndex){
         if (typeof TermDocumentMatrix[docIndex] != "object") {
-            TermDocumentMatrix[docIndex] = new Array(len);
-            TermDocumentMatrix[docIndex].fill(0);
+            TermDocumentMatrix[docIndex] = [];
         }
         TermDocumentMatrix[docIndex][termIndex] = docMap[docIndex];
     });
@@ -90,6 +89,9 @@ TermDocumentMapKeys.forEach(function(term){
 	delete TermDocumentMap[term];
     termIndex++;
 });
+
+TermDocumentMap = null;
+TermDocumentMapKeys = null;
 
 kMeans = new KMeans(TermDocumentMatrix, { 
                                          k: K,
