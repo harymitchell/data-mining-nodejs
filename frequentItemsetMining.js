@@ -20,8 +20,8 @@ if (process.argv[2] === "RUNNER") {
     //var minSupports = [2,3];
     //var minConfidences = [.3,.4];
     	
-    var minSupports = [2,3,4,5,6];
-    var minConfidences = [.2,.3,.4,.5,.6,.7];
+    var minSupports = [3,4,5];
+    var minConfidences = [.3,.4,.5];
     
     Ds.forEach(function(D){
 		ALGORITHMS.forEach(function(a){
@@ -129,7 +129,7 @@ function writeOutFile(t) {
 }
 if (algorithm == "a") {
 	var start = (new Date).getTime();
-	apriori = new Apriori(orderProducts.slice(dataSize), config);
+	apriori = new Apriori(orderProducts.slice(0,dataSize), config);
 	apriori.initialize();
 	apriori.generateAssociationRules();
 	var t = (new Date).getTime() - start;
@@ -139,7 +139,7 @@ if (algorithm == "a") {
 }
 if (algorithm == "f") {
 	var start = (new Date).getTime();
-	fp = new FpGrowth(orderProducts.slice(dataSize), config);
+	fp = new FpGrowth(orderProducts.slice(0,dataSize), config);
 	fp.initialize();
 	var t = (new Date).getTime() - start;
 	console.log ("Done with FP growth in ",t ," ms");
@@ -148,7 +148,7 @@ if (algorithm == "f") {
 }
 if (algorithm == "e") {
 	var start = (new Date).getTime();
-	eclat = new Eclat(orderProducts.slice(dataSize), config);
+	eclat = new Eclat(orderProducts.slice(0,dataSize), config);
 	eclat.initialize();
 	eclat.generateAssociationRules();
 	var t = (new Date).getTime() - start;
