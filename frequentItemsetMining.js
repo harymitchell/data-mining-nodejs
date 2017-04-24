@@ -14,7 +14,7 @@ var RESULTS_FILE = "frequentItemset.csv";
 // Main
 if (process.argv[2] === "RUNNER") {
     fs.writeFileSync(RESULTS_FILE, "algorithm,dataSize,minSupport, minConfidence,column,time");
-	var D = 20;
+	var Ds = [500, 1000, 3000, 5000, 7000];
     var minSupports = [2,3];
     var minConfidences = [.3,.4];
 	
@@ -23,14 +23,16 @@ if (process.argv[2] === "RUNNER") {
     //var minSupports = [2,3,4,5,6];
     //var minConfidences = [.2,.3,.4,.5,.6,.7];
     
-    ALGORITHMS.forEach(function(a){
-        minSupports.forEach(function(s){
-	        minConfidences.forEach(function(c){
-				columnIndexes.forEach(function(i){
-					execSync("node frequentItemsetMining.js "+a+" "+D+" "+s+" "+c+" "+i, {stdio:[0,1,2]});
+    Ds.forEach(function(D){
+		ALGORITHMS.forEach(function(a){
+			minSupports.forEach(function(s){
+				minConfidences.forEach(function(c){
+					columnIndexes.forEach(function(i){
+						execSync("node frequentItemsetMining.js "+a+" "+D+" "+s+" "+c+" "+i, {stdio:[0,1,2]});
+					});
 				});
 			});
-        }); 
+		});
     });
     console.log ("done");
 	process.exit(0);
