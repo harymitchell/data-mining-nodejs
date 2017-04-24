@@ -15,13 +15,13 @@ var RESULTS_FILE = "frequentItemset.csv";
 if (process.argv[2] === "RUNNER") {
     fs.writeFileSync(RESULTS_FILE, "algorithm,dataSize,minSupport, minConfidence,column,time");
 	var Ds = [500, 1000, 3000, 5000, 7000];
-    var minSupports = [2,3];
-    var minConfidences = [.3,.4];
-	
 	var columnIndexes = [17,16,15];
 	
-    //var minSupports = [2,3,4,5,6];
-    //var minConfidences = [.2,.3,.4,.5,.6,.7];
+    //var minSupports = [2,3];
+    //var minConfidences = [.3,.4];
+    	
+    var minSupports = [2,3,4,5,6];
+    var minConfidences = [.2,.3,.4,.5,.6,.7];
     
     Ds.forEach(function(D){
 		ALGORITHMS.forEach(function(a){
